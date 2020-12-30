@@ -1,0 +1,142 @@
+// Variables
+$primaryColor: #b72025;
+$buttonColor: white;
+$fontBold: HKGroteskProBold;
+
+// HTML Elements
+a { color: $primaryColor; }
+a:hover { color: $primaryColor; text-decoration: none; }
+textarea { resize: none; }
+
+// Bootstrap Class Modifications
+nav.navbar { border-width: 0px !important; border-bottom: 3px solid #b72025 !important; height: 80px; }
+nav.navbar div.dropdown-menu a:hover { color: #b72025 !important; }
+.active { color: #b72025 !important; font-weight: bold !important; }
+.border-primary { border-color: $primaryColor !important; }
+.btn:hover, .btn, .flickity-button, .flickity-button:hover { background-color: $primaryColor; color: $buttonColor; }
+.text-primary { color: $primaryColor !important; } // The "!important" is needed here.
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover { color: $primaryColor; }
+.btn-check:active + .btn-primary, .btn-check:checked + .btn-primary, .btn-primary.active, .btn-primary:active, .show > .btn-primary.dropdown-toggle { background-color: $primaryColor; }
+.btn-check:active + .btn-success, .btn-check:checked + .btn-success, .btn-success.active, .btn-success:active, .show > .btn-success.dropdown-toggle { background-color: $primaryColor; }
+.btn-check:focus + .btn-primary, .btn-primary:focus, .btn-primary:hover { background-color: $primaryColor; }
+
+// Custom Classes & IDs
+.fontBold { font-family: $fontBold, Helvetica, Verdana, Arial, sans-serif; }
+form#contactUsForm span.invalid-feedback { color: red; }
+.svgPrimaryColor { filter: brightness( 0 ) saturate( 100% ) invert( 23% ) sepia( 65% ) saturate( 2552% ) hue-rotate( 338deg ) brightness( 81% ) contrast( 104% ); }
+section.heroImage { margin-top: 80px; max-height: 600px; }
+section#aboutUs h2 { font-size: 1.6125rem; }
+.textStrokeBlack { font-weight: bold; text-shadow: -1px -1px 0 rgba( 0, 0, 0, 0.5), 1px -1px 0 rgba( 0, 0, 0, 0.5), -1px 1px 0 rgba( 0, 0, 0, 0.5), 1px 1px 0 rgba( 0, 0, 0, 0.5); } // 1px black stroke with a 50% opacity.
+
+// Selectors
+footer a:hover { font-family: $fontBold, Helvetica, Verdana, Arial, sans-serif; }
+section#map div#cscMap div.leaflet-control-container > div.leaflet-bottom.leaflet-right > div { display: none; } // Hide the Leaflet Mapbox disclaimer.
+.icon > img { width: 3rem; height: 3rem; }
+div.grecaptcha-badge { opacity: 0; }
+
+@font-face {
+	font-family: HKGroteskProBold;
+	src: url( "fonts/HK%20Grotesk%20Pro/HKGroteskPro-Bold.woff" ) format( "woff" );
+}
+
+@media only screen and ( max-width: 767px ) {
+	.subheading { font-size: 12px; } // So the subheadings show on one line.
+}
+
+// Link Overline Animation for Header Menu Links Source: https://tobiasahlin.com/blog/css-trick-animating-link-underlines/
+@media only screen and ( min-width: 992px ) {
+	a.nav-link { padding: 0 !important;  margin: 0 15px !important; } // Change the spacing from padding to margin so the underline isn't wider than the word link.
+
+	li.nav-item > a {
+		position: relative;
+		text-decoration: none;
+	}
+
+	li.nav-item > a::before {
+		content: "";
+		position: absolute;
+		width: 100%;
+		height: 3px;
+		top: -5px;
+		left: 0;
+		background-color: #b72025;
+		visibility: hidden;
+		transform: scaleX( 0 );
+		transition: all 0.3s ease-in-out 0s;
+	}
+
+	li.nav-item > a:hover::before {
+		visibility: visible;
+		transform: scaleX( 1 );
+	}
+}
+
+// Start responsive logo.
+@media only screen and ( max-width: 300px ) {
+	nav.navbar div.container, nav.navbar div.container button.navbar-toggler { padding: 0 !important; }
+	a.navbar-brand { width: 65%; }
+	img.navbar-brand-img.rectangle { width: 100%; }
+}
+
+@media only screen and ( min-width: 151px ) {
+	img.navbar-brand-img.square { display: none; }
+}
+
+@media only screen and ( max-width: 150px ) {
+	img.navbar-brand-img.rectangle { display: none; }
+}
+
+@media only screen and ( max-width: 100px ) {
+	a.navbar-brand { width: 35%; }
+}
+
+@media only screen and ( max-width: 65px ) {
+	a.navbar-brand, img.navbar-brand-img.square { display: none; }
+	nav.navbar div.container button.navbar-toggler { margin: 0 auto; }
+}
+// End responsive logo.
+
+// Change Autocompleted Styles in Chrome to Match the Default Values
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+	border: 1px solid #f1f4f8;
+	-webkit-text-fill-color: #161c2d; // Text color.
+	-webkit-box-shadow: 0 0 0px 1000px #fff inset; // Input field background color.
+	transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Flip card https://www.codeply.com/go/roydoXgaLr/bootstrap-4-flip-cards */
+.card-flip > div {
+	backface-visibility: hidden;
+	transition: transform 300ms;
+	transition-timing-function: linear;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	display: flex;
+}
+
+.card-front {
+	transform: rotateY(0deg);
+}
+
+.card-back {
+	transform: rotateY(180deg);
+	position: absolute;
+	top: 0;
+}
+
+.card-flip:hover .card-front {
+	transform: rotateY(-180deg);
+}
+
+.card-flip:hover .card-back {
+	transform: rotateY(0deg);
+}
